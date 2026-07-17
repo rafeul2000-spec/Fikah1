@@ -546,7 +546,7 @@
 
     </div>
 
-    <script>
+        <script>
         const bnNumbers = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
         const totalQ = 75;
 
@@ -555,9 +555,8 @@
             return num.toString().split('').map(d => isNaN(d) ? d : bnNumbers[parseInt(d)]).join('');
         }
 
-        // Checkbox & Progress
-        function check(el) {
-            el.classList.toggle('done');
+        // Update Progress UI
+        function updateProgress() {
             let doneCount = document.querySelectorAll('.q-row.done').length;
             let percent = Math.round((doneCount / totalQ) * 100);
             
@@ -566,10 +565,54 @@
             document.getElementById('p-fill').style.width = percent + '%';
         }
 
-        // Dark/Light Theme
+        // Checkbox & Save to LocalStorage
+        function check(el) {
+            el.classList.toggle('done');
+            
+            // Find index of the clicked row
+            let rows = Array.from(document.querySelectorAll('.q-row'));
+            let index = rows.indexOf(el);
+            
+            // Save state to LocalStorage
+            let savedState = JSON.parse(localStorage.getItem('fiqh_progress')) || {};
+            if (el.classList.contains('done')) {
+                savedState[index] = true;
+            } else {
+                delete savedState[index];
+            }
+            localStorage.setItem('fiqh_progress', JSON.stringify(savedState));
+
+            updateProgress();
+        }
+
+        // Dark/Light Theme & Save to LocalStorage
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
+            let isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('fiqh_theme', isDark ? 'dark' : 'light');
         }
-    </script>
+
+        // On Page Load: Restore Progress and Theme
+        window.onload = function() {
+            // Restore progress
+            let savedState = JSON.parse(localStorage.getItem('fiqh_progress')) || {};
+            let rows = document.querySelectorAll('.q-row');
+            
+            rows.forEach((row, index) => {
+                if (savedState[index]) {
+                    row.classList.add('done');
+                }
+            });
+
+            // Restore theme
+            if (localStorage.getItem('fiqh_theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Update UI based on restored state
+            updateProgress();
+        };
+        </script>
+    
 </body>
 </html>
