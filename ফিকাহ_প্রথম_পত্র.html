@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="bn" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আল ফিকহ প্রথম পত্র - প্রিমিয়াম ট্র্যাকার</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Minimalist Premium Palette */
+            --bg-body: #F8FAFC;
+            --bg-container: #FFFFFF;
+            --text-main: #0F172A;
+            --text-sub: #64748B;
+            --primary: #0F5132; /* Rich Forest Green */
+            --accent: #B45309; /* Elegant Bronze/Gold */
+            --border-light: #E2E8F0;
+            --divider: rgba(0, 0, 0, 0.04);
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        body.dark-mode {
+            --bg-body: #0B0F19;
+            --bg-container: #111827;
+            --text-main: #F3F4F6;
+            --text-sub: #9CA3AF;
+            --primary: #10B981;
+            --accent: #FBBF24;
+            --border-light: #1F2937;
+            --divider: rgba(255, 255, 255, 0.03);
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        /* Minimalist Warning Banner */
+        .alert-banner {
+            background-color: rgba(180, 83, 9, 0.05);
+            color: var(--accent);
+            text-align: center;
+            padding: 12px 24px;
+            font-size: 14.5px;
+            font-weight: 600;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid rgba(180, 83, 9, 0.1);
+        }
+
+        /* Sleek Sticky Nav */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            padding: 12px 0;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .sticky-nav {
+            background: rgba(17, 24, 39, 0.9);
+        }
+
+        .nav-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            gap: 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+        .nav-menu::-webkit-scrollbar { display: none; } /* Chrome */
+
+        .nav-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            background: rgba(15, 81, 50, 0.05);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .icon-btn:hover {
+            background: var(--divider);
+            border-color: var(--text-sub);
+        }
+
+        /* Seamless Main Container */
+        .main-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--bg-container);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            padding: 50px 60px;
+            transition: var(--transition);
+        }
+
+        /* Elegant Header */
+        .doc-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .doc-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 8px 0;
+        }
+
+        .doc-subtitle {
+            font-size: 16px;
+            color: var(--text-sub);
+            margin: 0;
+        }
+
+        /* Thin Progress Bar */
+        .progress-container {
+            margin-bottom: 50px;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 4px;
+            background: var(--border-light);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Minimalist Chapter Section (No Bulky Boxes) */
+        .chapter-section {
+            margin-bottom: 60px;
+            scroll-margin-top: 80px;
+        }
+
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .chapter-header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .chapter-header .ar-title {
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* Clean List Rows */
+        .q-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 16px 10px;
+            border-bottom: 1px solid var(--divider);
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 20px;
+        }
+
+        .q-row:hover {
+            background-color: var(--divider);
+            border-radius: 8px;
+            border-bottom-color: transparent;
+        }
+
+        .q-row:last-child {
+            border-bottom: none;
+        }
+
+        .q-num {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 30px;
+            padding-top: 2px;
+        }
+
+        .q-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .bn-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .ar-text {
+            font-family: 'Amiri', serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-sub);
+            direction: rtl;
+            text-align: right;
+            transition: color 0.3s;
+        }
+
+        /* Sleek Checkbox */
+        .check-ring {
+            width: 22px;
+            height: 22px;
+            border: 1.5px solid var(--text-sub);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .check-ring svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: var(--transition);
+        }
+
+        /* Checked State */
+        .q-row.done .check-ring {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .q-row.done .check-ring svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .q-row.done .bn-text,
+        .q-row.done .ar-text {
+            color: var(--border-light);
+            text-decoration: line-through;
+            text-decoration-color: var(--border-light);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-container { padding: 30px 20px; margin: 20px 10px; border-radius: 16px; }
+            .chapter-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .ar-text { text-align: left; direction: ltr; }
+            .nav-wrapper { padding: 0 15px; }
+        }
+
+        /* Print Mode */
+        @media print {
+            body { background: #fff; color: #000; }
+            .alert-banner, .sticky-nav, .progress-container, .check-ring { display: none !important; }
+            .main-container { box-shadow: none; margin: 0; padding: 0; max-width: 100%; }
+            .chapter-section { page-break-inside: avoid; margin-bottom: 30px; }
+            .chapter-header { border-bottom: 2px solid #000; }
+            .chapter-header h2, .chapter-header .ar-title, .bn-text, .ar-text, .q-num { color: #000 !important; }
+            .q-row { border-bottom: 1px solid #eee; padding: 8px 0; }
+        }
+
+        /* User Footer CSS Addition */
+        .app-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 11px;
+            color: #64748b;
+            letter-spacing: 0.5px;
+        }
+        .app-footer a {
+            font-family: 'Allura', cursive;
+            font-size: 24px;
+            color: #0d5c75;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Minimalist Alert -->
+    <div class="alert-banner">
+        ⚠️ বিশেষ সতর্কবাণী: কেউ কোনো সাজেশন ফলো করলেও সবকিছুর ওপর স্পষ্ট ধারণা রাখবেন। আর নিজে গাইড থেকে পড়ার পর নিজে অ্যাক্টিভ রিকল (Active Recall) করার জন্য এখানে টপিকগুলো দেখবেন এবং নিজে নিজে মনে করার চেষ্টা করবেন।
+    </div>
+
+    <!-- Sleek Navigation -->
+    <nav class="sticky-nav">
+        <div class="nav-wrapper">
+            <div class="nav-menu">
+                <a href="#t1" class="nav-link">হজ্জ ও উমরাহ</a>
+                <a href="#t2" class="nav-link">নিকাহ</a>
+                <a href="#t3" class="nav-link">তালাক ও যিহার</a>
+                <a href="#t4" class="nav-link">জিহাদ ও অর্থ</a>
+                <a href="#t5" class="nav-link">যবাই ও শিকার</a>
+                <a href="#t6" class="nav-link">কোরবানি</a>
+            </div>
+            <div class="actions">
+                <button class="icon-btn" onclick="toggleTheme()" title="থিম পরিবর্তন">🌓</button>
+                <button class="icon-btn" onclick="window.print()" title="প্রিন্ট করুন">🖨️</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Seamless Container -->
+    <div class="main-container">
+        
+        <div class="doc-header">
+            <h1 class="doc-title">আল ফিকহ প্রথম পত্র</h1>
+            <p class="doc-subtitle">মডেল টেস্ট ০১-০৫ : আলিম পরীক্ষা ২০২৬</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-stats">
+                <span>প্রস্তুতির অগ্রগতি</span>
+                <span><span id="p-count">০</span>/৭৫ (<span id="p-percent">০%</span>)</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="p-fill"></div>
+            </div>
+        </div>
+
+        <!-- Type 1 -->
+        <div class="chapter-section" id="t1">
+            <div class="chapter-header">
+                <h2>টাইপ ১: কিতাবুল হজ্জ ও উমরাহ</h2>
+                <div class="ar-title">كِتَابُ الْحَجِّ وَالْعُمْرَةِ</div>
+            </div>
+            <div class="q-group">
+                <div class="q-row" onclick="check(this)"><div class="q-num">০১.</div><div class="q-content"><div class="bn-text">হজ্জের আভিধানিক ও পারিভাষিক সংজ্ঞা</div><div class="ar-text">تَعْرِيفُ الْحَجِّ لُغَةً وَشَرْعًا / اصْطِلَاحًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০২.</div><div class="q-content"><div class="bn-text">হজ্জে আকবার-এর তাৎপর্য</div><div class="ar-text">الْمُرَادُ بِالْحَجِّ الْأَكْبَرِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০৩.</div><div class="q-content"><div class="bn-text">হজ্জ কার ওপর ফরয এবং কার ওপর ফরয নয়</div><div class="ar-text">عَلَى مَنْ يَجِبُ الْحَجُّ وَعَلَى مَنْ لَا يَجِبُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০৪.</div><div class="q-content"><div class="bn-text">হজ্জ অবিলম্বে আদায় করা ওয়াজিব নাকি বিলম্বে জায়েয (দলিলসহ)</div><div class="ar-text">هَلِ الْحَجُّ وَاجِبٌ عَلَى الْفَوْرِ أَمْ عَلَى التَّرَاخِي؟ مُدَلَّلًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০৫.</div><div class="q-content"><div class="bn-text">হজ্জের ফরয ও ওয়াজিবসমূহ</div><div class="ar-text">فَرَائِضُ الْحَجِّ وَوَاجِبَاتُهُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০৬.</div><div class="q-content"><div class="bn-text">হজ্জের প্রকারসমূহ— ইফরাদ, তামাত্তু ও কিরান-এর সংজ্ঞা</div><div class="ar-text">أَقْسَامُ الْحَجِّ: الْإِفْرَادُ وَالتَّمَتُّعُ وَالْقِرَانُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০৭.</div><div class="q-content"><div class="bn-text">হজ্জের প্রকারসমূহের মধ্যে কোনটি সর্বোত্তম (ইখতিলাফসহ)</div><div class="ar-text">أَيُّ أَقْسَامِ الْحَجِّ أَفْضَلُ؟ بَيِّنْ مَعَ اخْتِلَافِ الْأَئِمَّةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০৮.</div><div class="q-content"><div class="bn-text">ইহরামের আভিধানিক ও পারিভাষিক সংজ্ঞা</div><div class="ar-text">تَعْرِيفُ الْإِحْرَامِ لُغَةً وَشَرْعًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">০৯.</div><div class="q-content"><div class="bn-text">ইহরাম বাঁধার সঠিক পদ্ধতি</div><div class="ar-text">كَيْفِيَّةُ الْإِحْرَامِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১০.</div><div class="q-content"><div class="bn-text">ইহরাম অবস্থায় নিষিদ্ধ বিষয়সমূহ (মমনূআত)</div><div class="ar-text">الْأَشْيَاءُ الْمَمْنُوعَاتُ فِي حَالِ الْإِحْرَامِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১১.</div><div class="q-content"><div class="bn-text">হজ্জের মীকাতসমূহ</div><div class="ar-text">مَوَاقِيتُ الْحَجِّ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১২.</div><div class="q-content"><div class="bn-text">ইহরামের দিক থেকে মুহরিম কত প্রকার ও কী কী</div><div class="ar-text">أَقْسَامُ الْمُحْرِمِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১৩.</div><div class="q-content"><div class="bn-text">মুহরিমদের প্রকারসমূহের মধ্যে কে সর্বোত্তম</div><div class="ar-text">أَيُّهُمْ أَفْضَلُ؟ بَيِّنْ مَعَ اخْتِلَافِ الْأَئِمَّةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১৪.</div><div class="q-content"><div class="bn-text">হজ্জের অপরাধসমূহ বা জিনায়াতসমূহ কী কী</div><div class="ar-text">الْجِنَايَاتُ فِي الْحَجِّ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১৫.</div><div class="q-content"><div class="bn-text">উমরাহর সংজ্ঞা</div><div class="ar-text">تَعْرِيفُ الْعُمْرَةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১৬.</div><div class="q-content"><div class="bn-text">হজ্জ ও উমরাহর মধ্যকার মৌলিক পার্থক্যসমূহ</div><div class="ar-text">الْفَرْقُ بَيْنَ الْحَجِّ وَالْعُمْرَةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১৭.</div><div class="q-content"><div class="bn-text">হাদী (হজ্জের কুরবানি) বলতে কী বোঝায়</div><div class="ar-text">الْمُرَادُ بِالْهَدْيِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১৮.</div><div class="q-content"><div class="bn-text">কার ওপর হাদী ওয়াজিব</div><div class="ar-text">عَلَى مَنْ يَجِبُ الْهَدْيُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">১৯.</div><div class="q-content"><div class="bn-text">কোন পশু দ্বারা হাদী জায়েয এবং কোন পশু দ্বারা জায়েয নয়</div><div class="ar-text">بِأَيِّ حَيَوَانٍ يَجُوزُ الْهَدْيُ وَبِأَيِّ لَا يَجُوزُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২০.</div><div class="q-content"><div class="bn-text">হজ্জে 'রফছ', 'ফুসূক' ও 'জিদাল' বলতে কী বোঝায়</div><div class="ar-text">الرَّفَثُ وَالْفُسُوقُ وَالْجِدَالُ فِي الْحَجِّ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২১.</div><div class="q-content"><div class="bn-text">'ইহসার' (হজ্জে বাধাগ্রস্ত হওয়া)-এর অর্থ ও এর শরয়ী হুকুম</div><div class="ar-text">الْمُرَادُ بِالْإِحْصَارِ وَحُكْمُهُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+            </div>
+        </div>
+
+        <!-- Type 2 -->
+        <div class="chapter-section" id="t2">
+            <div class="chapter-header">
+                <h2>টাইপ ২: কিতাবুন নিকাহ</h2>
+                <div class="ar-title">كِتَابُ النِّكَاحِ</div>
+            </div>
+            <div class="q-group">
+                <div class="q-row" onclick="check(this)"><div class="q-num">২২.</div><div class="q-content"><div class="bn-text">নিকাহ বা বিবাহের আভিধানিক ও পারিভাষিক সংজ্ঞা</div><div class="ar-text">تَعْرِيفُ النِّكَاحِ لُغَةً وَشَرْعًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২৩.</div><div class="q-content"><div class="bn-text">বিবাহের হুকুম, শর্ত ও রুকন</div><div class="ar-text">حُكْمُ النِّكَاحِ وَشَرْطُهُ وَرُكْنُهُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২৪.</div><div class="q-content"><div class="bn-text">বিবাহের কারণসমূহ (ইল্লাত)</div><div class="ar-text">عِلَلُ النِّكَاحِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২৫.</div><div class="q-content"><div class="bn-text">কোন শব্দে বিবাহ সহীহ হয় এবং কোন শব্দে হয় না</div><div class="ar-text">بِأَيِّ أَلْفَاظٍ يَصِحُّ النِّكَاحُ وَبِأَيِّ أَلْفَاظٍ لَا يَصِحُّ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২৬.</div><div class="q-content"><div class="bn-text">বিবাহ (নিকাহ) এবং ক্রয়-বিক্রয়ের (বাই') মধ্যে পার্থক্য</div><div class="ar-text">الْفَرْقُ بَيْنَ النِّكَاحِ وَالْبَيْعِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২৭.</div><div class="q-content"><div class="bn-text">মহরের আভিধানিক ও পারিভাষিক অর্থ কী</div><div class="ar-text">تَعْرِيفُ الْمَهْرِ لُغَةً وَشَرْعًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২৮.</div><div class="q-content"><div class="bn-text">মহর কখন ওয়াজিব হয়</div><div class="ar-text">مَتَى يَجِبُ الْمَهْرُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">২৯.</div><div class="q-content"><div class="bn-text">মহরের সর্বনিম্ন পরিমাণ (দলিলসহ)</div><div class="ar-text">أَقَلُّ مِقْدَارِ الْمَهْرِ مُدَلَّلًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩০.</div><div class="q-content"><div class="bn-text">বংশগত কারণে বিবাহ নিষিদ্ধ নারী কারা</div><div class="ar-text">الْمُحَرَّمَاتُ مِنَ النَّسَبِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩১.</div><div class="q-content"><div class="bn-text">দুগ্ধপানগত কারণে বিবাহ নিষিদ্ধ নারী কারা</div><div class="ar-text">الْمُحَرَّمَاتُ مِنَ الرَّضَاعَةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩২.</div><div class="q-content"><div class="bn-text">বৈবাহিক সূত্রগত কারণে বিবাহ নিষিদ্ধ নারী কারা</div><div class="ar-text">الْمُحَرَّمَاتُ مِنَ الْمُصَاهَرَةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩৩.</div><div class="q-content"><div class="bn-text">স্থায়ী ও অস্থায়ীভাবে বিবাহ নিষিদ্ধ নারীদের বিবরণ</div><div class="ar-text">الْمُحَرَّمَاتُ مُؤَبَّدًا وَمُؤَقَّتًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩৪.</div><div class="q-content"><div class="bn-text">ওলী (অভিভাবক) ও কুফু (সমতা) বলতে কী বোঝায়</div><div class="ar-text">الْوَلِيُّ وَالْكُفُوءُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩৫.</div><div class="q-content"><div class="bn-text">অভিভাবক কি কোনো প্রাপ্তবয়স্কা নারীকে বিবাহে বাধ্য করতে পারেন</div><div class="ar-text">هَلْ يَجُوزُ إِجْبَارُ الْوَلِيِّ عَلَى رِضَاهَا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩৬.</div><div class="q-content"><div class="bn-text">কুমারী মেয়ের নীরবতা (স্কুতুল বকর) বলতে কী বোঝায়</div><div class="ar-text">سُكُوتُ الْبِكْرِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩৭.</div><div class="q-content"><div class="bn-text">না জেনে নীরব থাকলে মেয়ের খিয়ারে রেযা শেষ পর্যন্ত বলবৎ থাকবে কি না</div><div class="ar-text">هَلْ يَمْتَدُّ خِيَارُ الرِّضَا إِلَى آخِرِ الْمَجْلِسِ إِنْ جَهِلَتْ بِهِ؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+            </div>
+        </div>
+
+        <!-- Type 3 -->
+        <div class="chapter-section" id="t3">
+            <div class="chapter-header">
+                <h2>টাইপ ৩: কিতাবুত তলাক ও যিহার</h2>
+                <div class="ar-title">كِتَابُ الطَّلَاقِ وَالظِّهَارِ</div>
+            </div>
+            <div class="q-group">
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩৮.</div><div class="q-content"><div class="bn-text">তালাকের আভিধানিক ও পারিভাষিক সংজ্ঞা</div><div class="ar-text">تَعْرِيفُ الطَّلَاقِ لُغَةً وَشَرْعًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৩৯.</div><div class="q-content"><div class="bn-text">উচ্চারণ ও হুকুমের দিক থেকে তালাক কত প্রকার ও কী কী</div><div class="ar-text">أَقْسَامُ الطَّلَاقِ بِنِسْبَةِ الْأَلْفَاظِ وَالْوُقُوعِ وَالْحُكْمِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪০.</div><div class="q-content"><div class="bn-text">স্পষ্ট (ছরীহ) ও পরোক্ষ তালাক (কেনায়াহ)-এর সংজ্ঞা ও উদাহরণ</div><div class="ar-text">تَعْرِيفُ الصَّرِيحِ وَالْكِنَايَةِ مَعَ الْأَمْثِلَةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪১.</div><div class="q-content"><div class="bn-text">ছরীহ ও কেনায়াহ তালাকের পার্থক্য ও এদের শরয়ী হুকুম</div><div class="ar-text">الْفَرْقُ بَيْنَهُمَا وَحُكْمُهُمَا بالتَّفْصِيلِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪২.</div><div class="q-content"><div class="bn-text">যিহারের আভিধানিক ও পারিভাষিক অর্থ এবং এর শরয়ী হুকুম</div><div class="ar-text">مَعْنَى الظِّهَارِ لُغَةً وَشَرْعًا وَحُكْمُهُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪৩.</div><div class="q-content"><div class="bn-text">যিহার কীভাবে সংঘটিত বা প্রমাণিত হয়</div><div class="ar-text">كَيْفَ يَثْبُتُ الظِّهَارُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪৪.</div><div class="q-content"><div class="bn-text">যিহারের কাফফারা আদায়ের পদ্ধতি (দলিলের আলোকে)</div><div class="ar-text">كَفَّارَةُ الظِّهَارِ بالتَّفْصِيلِ مُؤَيَّدًا بِالدَّلَائِلِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+            </div>
+        </div>
+
+        <!-- Type 4 -->
+        <div class="chapter-section" id="t4">
+            <div class="chapter-header">
+                <h2>টাইপ ৪: কিতাবুল জিহাদ ও আর্থিক ব্যবস্থা</h2>
+                <div class="ar-title">كِتَابُ الْجِهَادِ وَالْأَمْوَالِ</div>
+            </div>
+            <div class="q-group">
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪৫.</div><div class="q-content"><div class="bn-text">জিহাদের আভিধানিক ও পারিভাষিক সংজ্ঞা</div><div class="ar-text">تَعْرِيفُ الْجِهَادِ لُغَةً وَشَرْعًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪৬.</div><div class="q-content"><div class="bn-text">জিহাদ কখন ফরযে আইন এবং কখন ফরযে কিফায়াহ হয়</div><div class="ar-text">مَتَى يَكُونُ الْجِهَادُ فَرْضَ عَيْنٍ وَمَتَى فَرْضَ كِفَايَةٍ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪৭.</div><div class="q-content"><div class="bn-text">মুরতাদ (ধর্মত্যাগী) ও বাগী (বিদ্রোহী) বলতে কী বোঝায় ও হুকুম</div><div class="ar-text">الْمُرْتَدُّ وَالْبَاغِي وَحُكْمُهُمَا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪৮.</div><div class="q-content"><div class="bn-text">"الجهاد ماض إلى يوم القيامة"-এর বিস্তারিত ব্যাখ্যা</div><div class="ar-text">شَرْحُ قَوْلِهِ عَلَيْهِ السَّلَامُ: "الْجِهَادُ مَاضٍ إِلَى يَوْمِ الْقِيَامَةِ"</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৪৯.</div><div class="q-content"><div class="bn-text">গনীমত, ফায়, জিযয়া, খারাজ, জু'ল ও সালাব-এর সংজ্ঞা</div><div class="ar-text">تَعْرِيفُ الْغَنِيمَةِ وَالْفَيْءِ وَالْجِزْيَةِ وَالْخَرَاجِ وَالْجُعْلِ وَالسَّلَبِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫০.</div><div class="q-content"><div class="bn-text">গনীমত, ফায়, জিযয়া, খারাজ, জু'ল ও সালাব-এর পার্থক্য</div><div class="ar-text">الْفَرْقُ بَيْنَهَا بالتَّفْصِيلِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫১.</div><div class="q-content"><div class="bn-text">জিযয়া কার ওপর ফরয বা ধার্য করা হয় এবং কার ওপর করা হয় না</div><div class="ar-text">عَلَى مَنْ تَجِبُ الْجِزْيَةُ وَعَلَى مَنْ لَا تَجِبُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫২.</div><div class="q-content"><div class="bn-text">কখন জিযয়া ওয়াজিব হয় এবং কখন হয় না</div><div class="ar-text">مَتَى تَجِبُ الْجِزْيَةُ وَمَتَى لَا تَجِبُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫৩.</div><div class="q-content"><div class="bn-text">মুজাহিদদের মধ্যে গনীমত ও ফায়-এর মাল বণ্টনের নিয়ম</div><div class="ar-text">كَيْفَ تُقْسَمُ الْغَنِيمَةُ وَالْفَيْءُ بَيْنَ الرَّاجِلِ وَالْفَارِسِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫৪.</div><div class="q-content"><div class="bn-text">যুদ্ধবন্দীদের মুক্তিপণ (ফিদা) গ্রহণের ব্যাপারে ইমামদের মতভেদ</div><div class="ar-text">الِاخْتِلَافُ فِي قَبُولِ الْفِدَاءِ بِالْمَالِ وَالنَّفْسِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+            </div>
+        </div>
+
+        <!-- Type 5 -->
+        <div class="chapter-section" id="t5">
+            <div class="chapter-header">
+                <h2>টাইপ ৫: কিতাবুজ জাবাইহ ওয়াস সাইদ</h2>
+                <div class="ar-title">كِتَابُ الذَّبَائِحِ وَالصَّيْدِ</div>
+            </div>
+            <div class="q-group">
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫৫.</div><div class="q-content"><div class="bn-text">জাবীহাহ বা পশুর যবাই বলতে কী বোঝায়</div><div class="ar-text">تَعْرِيفُ الذَّبِيحَةِ / الذَّبْحِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫৬.</div><div class="q-content"><div class="bn-text">কোন অস্ত্র দ্বারা যবাই করা জায়েয আর কোনটি দ্বারা জায়েয নয়</div><div class="ar-text">بِمَ يَجُوزُ الذَّبْحُ وَبِمَ لَا يَجُوزُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫৭.</div><div class="q-content"><div class="bn-text">যবাইয়ের প্রকারভেদ কয়টি ও কী কী</div><div class="ar-text">أَقْسَامُ الذَّبْحِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫৮.</div><div class="q-content"><div class="bn-text">যবাইয়ের ক্ষেত্রে মুস্তাহাব (মানদুব) ও মাকরূহ বিষয়গুলো</div><div class="ar-text">الْمَنْدُوبُ وَالْمَكْرُوهُ فِي الذَّبْحِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৫৯.</div><div class="q-content"><div class="bn-text">শিশু, পাগল ও মূর্তিপূজকের যবাইয়ের হুকুম (মতভেদসহ)</div><div class="ar-text">حُكْمُ ذَبِيحَةِ الصَّغِيرِ وَالْمَجْنُونِ وَالْوَثَنِيِّ وَالْمَجُوسِيِّ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬০.</div><div class="q-content"><div class="bn-text">ইচ্ছাকৃতভাবে বিসমিল্লাহ বর্জনকারীর যবাইকৃত পশুর হুকুম</div><div class="ar-text">حُكْمُ ذَبِيحَةِ تَارِكِ التَّسْمِيَةِ عَمْدًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬১.</div><div class="q-content"><div class="bn-text">যবাইকৃত পশুর পেটে থাকা ভ্রূণের (জনীন) শরয়ী হুকুম</div><div class="ar-text">حُكْمُ الْجَنِينِ إِذَا ذُبِحَتْ أُمُّهُ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬২.</div><div class="q-content"><div class="bn-text">শিকারের আভিধানিক ও পারিভাষিক অর্থ কী</div><div class="ar-text">تَعْرِيفُ الصَّيْدِ لُغَةً وَشَرْعًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬৩.</div><div class="q-content"><div class="bn-text">শিকার কি কেবল কুকুরের জন্য নির্দিষ্ট, নাকি অন্য প্রাণী দিয়েও যায়</div><div class="ar-text">هَلِ الصَّيْدُ مَخْصُوصٌ بِالْكَلْبِ أَمْ لَا؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬৪.</div><div class="q-content"><div class="bn-text">বন্দুকের মাধ্যমে শিকার করার হুকুম</div><div class="ar-text">حُكْمُ الصَّيْدِ بِالْبُنْدُقِيَّةِ</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬৫.</div><div class="q-content"><div class="bn-text">প্রশিক্ষণপ্রাপ্ত কুকুরের মাধ্যমে শিকার করার হুকুম কী</div><div class="ar-text">حُكْمُ الصَّيْدِ بِالْكَلْبِ الْمُعَلَّمِ وَمَتَى يَحِلُّ؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬৬.</div><div class="q-content"><div class="bn-text">শিকার করা প্রাণী হালাল হওয়ার জন্য কী কী শর্ত পূরণ করতে হয়</div><div class="ar-text">شرائط حل الصيد</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬৭.</div><div class="q-content"><div class="bn-text">কুকুর শিকারকে জীবিত অবস্থায় নিয়ে আসলে তা খাওয়ার হুকুম কী</div><div class="ar-text">إِذَا أَدْرَكَ الْمُرْسِلُ الصَّيْدَ حَيًّا هَلْ يَجُوزُ أَكْلُهُ؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+            </div>
+        </div>
+
+        <!-- Type 6 -->
+        <div class="chapter-section" id="t6">
+            <div class="chapter-header">
+                <h2>টাইপ ৬: কিতাবুল উদহিয়্যা (কোরবানি)</h2>
+                <div class="ar-title">كِتَابُ الْأُضْحِيَّةِ</div>
+            </div>
+            <div class="q-group">
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬৮.</div><div class="q-content"><div class="bn-text">উযহিয়্যা বা কোরবানির আভিধানিক ও পারিভাষিক অর্থ কী</div><div class="ar-text">تَعْرِيفُ الْأُضْحِيَّةِ لُغَةً وَشَرْعًا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৬৯.</div><div class="q-content"><div class="bn-text">কোরবানি কার ওপর এবং কখন ওয়াজিব হয়</div><div class="ar-text">عَلَى مَنْ تَجِبُ الْأُضْحِيَّةُ وَمَتَى؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৭০.</div><div class="q-content"><div class="bn-text">অন্ধ, খোঁড়া, উন্মাদ ও অতিশয় দুর্বল পশুর কোরবানি সহীহ হবে কি না</div><div class="ar-text">هَلْ تَصِحُّ الْأُضْحِيَّةُ بِالْعَمْيَاءِ وَالْعَرْجَاءِ وَالثَّوْلَاءِ وَالْعَجْفَاءِ؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৭১.</div><div class="q-content"><div class="bn-text">কানের অধিকাংশ অংশ কাটা পশুর কোরবানি সহীহ হবে কি না</div><div class="ar-text">هَلْ تَصِحُّ الْأُضْحِيَّةُ بِمَا ذَهَبَ أَكْثَرُ أُذُنِهَا؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৭২.</div><div class="q-content"><div class="bn-text">কোরবানির পশুর গোশত ও চামড়ার শরয়ী বিধান বা হুকুম</div><div class="ar-text">حُكْمُ لَحْمِ الْأُضْحِيَّةِ وَجِلْدِهَا</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৭৩.</div><div class="q-content"><div class="bn-text">ভুলবশত দুজন ব্যক্তি একে অপরের কোরবানিযোগ্য পশু যবাই করলে হুকুম কী</div><div class="ar-text">لَوْ غَلِطَ اثْنَانِ وَذَبَحَ كُلُّ شَاةَ صَاحِبِهِ فَمَا الْحُكْمُ؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৭৪.</div><div class="q-content"><div class="bn-text">জোরপূর্বক ছিনিয়ে নেওয়া (গসবকৃত) পশু দ্বারা কোরবানি করা জায়েয কি না</div><div class="ar-text">هَلْ تَصِحُّ التَّضْحِيَّةُ بِشَاةِ الْغَصْبِ؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                <div class="q-row" onclick="check(this)"><div class="q-num">৭৫.</div><div class="q-content"><div class="bn-text">আমানত রাখা (ওদিয়াহ) পশু দ্বারা কোরবানি করা জায়েয কি না</div><div class="ar-text">هَلْ تَصِحُّ التَّضْحِيَّةُ بِالْوَدِيعَةِ؟</div></div><div class="check-ring"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+            </div>
+        </div>
+        
+        <!-- App Footer Injection -->
+        <div class="app-footer">
+            Simplified by 🪶 <a href="https://wa.me/qr/DKMFRBEXXLUQK1" target="_blank">Rafeul Islam</a>
+        </div>
+
+    </div>
+
+    <script>
+        const bnNumbers = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+        const totalQ = 75;
+
+        // Convert number to Bengali
+        function toBn(num) {
+            return num.toString().split('').map(d => isNaN(d) ? d : bnNumbers[parseInt(d)]).join('');
+        }
+
+        // Checkbox & Progress
+        function check(el) {
+            el.classList.toggle('done');
+            let doneCount = document.querySelectorAll('.q-row.done').length;
+            let percent = Math.round((doneCount / totalQ) * 100);
+            
+            document.getElementById('p-count').innerText = toBn(doneCount);
+            document.getElementById('p-percent').innerText = toBn(percent) + '%';
+            document.getElementById('p-fill').style.width = percent + '%';
+        }
+
+        // Dark/Light Theme
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
